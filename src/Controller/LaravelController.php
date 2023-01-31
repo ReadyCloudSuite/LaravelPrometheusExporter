@@ -34,8 +34,8 @@ class LaravelController extends Controller
     {
         $renderer = new RenderTextFormat();
 
-        return Response::create(
+        return (new Response(
             $renderer->render($this->prometheusExporter->getMetricFamilySamples())
-        )->header('Content-Type', RenderTextFormat::MIME_TYPE);
+        ))->header('Content-Type', RenderTextFormat::MIME_TYPE);
     }
 }
